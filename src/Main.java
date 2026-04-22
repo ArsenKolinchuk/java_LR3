@@ -1,22 +1,31 @@
 public class Main {
     public static void main(String[] args) {
 
-        String text = "пільги=yes&обєм=1600";
+        // приклад рядка (замість args[0])
+        String input = "пільги=yes&обєм=1600";
 
-        int amp = text.indexOf('&');
+        // розділяємо по &
+        String[] parts = input.split("&");
 
-        String first = text.substring(0, amp);
-        String second = text.substring(amp + 1);
+        String benefitsPart = parts[0]; // пільги=yes
+        String volumePart = parts[1];   // обєм=1600
 
-        int eq1 = first.indexOf('=');
-        String name1 = first.substring(0, eq1);
-        String value1 = first.substring(eq1 + 1);
+        // отримуємо значення після =
+        String benefits = benefitsPart.split("=")[1];
+        int volume = Integer.parseInt(volumePart.split("=")[1]);
 
-        int eq2 = second.indexOf('=');
-        String name2 = second.substring(0, eq2);
-        String value2 = second.substring(eq2 + 1);
+        double taxRatePer100 = 20; // ставка (можеш змінити)
 
-        System.out.println(name1 + " = " + value1);
-        System.out.println(name2 + " = " + value2);
+        double tax;
+
+        // умова звільнення від податку
+        if (benefits.equals("yes") && volume > 1500) {
+            tax = 0;
+        } else {
+            tax = (volume / 100.0) * taxRatePer100;
+        }
+        System.out.println("Пільги: " + benefits);
+        System.out.println("Об'єм: " + volume + " см³");
+        System.out.println("Податок: " + tax + " грн");
     }
 }
