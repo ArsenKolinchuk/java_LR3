@@ -3,16 +3,20 @@ public class Main {
 
         String text = "пільги=yes&обєм=1600";
 
-        String[] parts = text.split("&");
+        int amp = text.indexOf('&');
 
-        for (int i = 0; i < parts.length; i++) {
+        String first = text.substring(0, amp);
+        String second = text.substring(amp + 1);
 
-            String[] item = parts[i].split("=");
+        int eq1 = first.indexOf('=');
+        String name1 = first.substring(0, eq1);
+        String value1 = first.substring(eq1 + 1);
 
-            String name = item[0];
-            String value = item[1];
+        int eq2 = second.indexOf('=');
+        String name2 = second.substring(0, eq2);
+        String value2 = second.substring(eq2 + 1);
 
-            System.out.println(name + " = " + value);
-        }
+        System.out.println(name1 + " = " + value1);
+        System.out.println(name2 + " = " + value2);
     }
 }
