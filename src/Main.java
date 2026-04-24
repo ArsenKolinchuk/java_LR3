@@ -14,7 +14,7 @@ public class Main {
         String benefits = benefitsPart.split("=")[1];
         int volume = Integer.parseInt(volumePart.split("=")[1]);
 
-        double taxRatePer100 = 20; // ставка (можеш змінити)
+        double taxRatePer100 = 20; // ставка 
 
         double tax;
 
